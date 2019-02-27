@@ -1,185 +1,201 @@
 const cities = [
   {
-    Phone: "201-422-9000",
-    Area: "Union City",
-    //Mesivta Sanz of Hudson County
-    Latitude: 40.77282,
-    Longitude: -74.027222
-  },
-  {
-    Phone: "203-754-4200",
-    Area: "Waterbury",
-    //Yeshiva Gedolah
-    Latitude: 41.568274,
-    Longitude: -73.040671
-  },
-  {
-    Phone: "212-230-1000",
-    Area: "Brooklyn/NYC",
-    //Shomer Shabbos
-    Latitude: 40.632954,
-    Longitude: -73.994682
-  },
-  {
-    Phone: "212-230-1000",
-    Area: "Washington Heights",
-    //KAJ
-    Latitude: 40.853358,
-    Longitude: -73.935625
-  },
-  {
-    Phone: "215-914-1600",
-    Area: "Philadelphia",
-    //House of Kosher
-    Latitude: 40.092787,
-    Longitude: -75.033102
-  },
-  {
-    Phone: "305-919-4900",
-    Area: "Miami",
-    //Surfside
-    Latitude: 25.878082,
-    Longitude: -80.124638
-  },
-  {
+    Area: "Baltimore",
     Phone: "410-358-0000",
-    Area: "Baltimore",
-    //Agudah shul
-    Latitude: 39.358051,
-    Longitude: -76.693087
+    Latitude: 39.362695,
+    Longitude: -76.689162
   },
   {
-    Phone: "410-764-0000",
-    Area: "Baltimore",
-    //Agudah shul
-    Latitude: 39.358051,
-    Longitude: -76.693087
-  },
-  {
-    Phone: "416-256-1000",
-    Area: "Toronto",
-    //Boat shul
-    Latitude: 43.715629,
-    Longitude: -79.42842
-  },
-  {
-    Phone: "450-434-2222",
-    Area: "Tosh",
-    //Hatzola office
-    Latitude: 45.613483,
-    Longitude: -73.872429
-  },
-  {
-    Phone: "514-341-1818",
-    Area: "Montreal",
-    //Yeshiva Gedola
-    Latitude: 45.512879,
-    Longitude: -73.620294
-  },
-  {
+    Area: "Boro Park",
     Phone: "718-387-1750",
-    Area: "Brooklyn/NYC",
-    //Shomer Shabbos
-    Latitude: 40.632954,
-    Longitude: -73.994682
+    Latitude: 40.629262,
+    Longitude: -73.987335
   },
   {
-    Phone: "718-387-1750",
+    Area: "Brooklyn",
+    Phone: "718-230-1000",
+    Latitude: 40.624437,
+    Longitude: -73.947158
+  },
+  {
     Area: "Catskills",
-    //Camp Munk
-    Latitude: 41.740291,
-    Longitude: -74.720995
-  },
-  {
     Phone: "718-387-1750",
-    Area: "Rockaways & Nassau County",
-    //Darchei
-    Latitude: 40.5968,
-    Longitude: -73.751511
+    Latitude: 41.655647,
+    Longitude: -74.689328
   },
   {
-    Phone: "718-755-8600",
-    Area: "Fleischmans",
-    //center
-    Latitude: 42.155138,
-    Longitude: -74.535021
-  },
-  {
-    Phone: "732-370-3600",
-    Area: "Lakewood",
-    //BMG
-    Latitude: 40.096415,
-    Longitude: -74.220611
-  },
-  {
-    Phone: "732-531-9988",
-    Area: "Jersey Shore",
-    //Slices pizza store
-    Latitude: 40.259701,
-    Longitude: -74.000322
-  },
-  {
-    Phone: "800-613-1911",
-    Area: "Los Angeles",
-    //R' Bess shul
-    Latitude: 34.076619,
-    Longitude: -118.346722
-  },
-  {
-    Phone: "845-425-1600",
-    Area: "Rockland",
-    //Vizhnitz
-    Latitude: 41.119015,
-    Longitude: -74.066636
-  },
-  {
-    Phone: "845-783-1212",
-    Area: "Monroe/KJ",
-    //center
-    Latitude: 41.34125,
-    Longitude: -74.168611
-  },
-  {
-    Phone: "847-504-1500",
     Area: "Chicago",
-    //Adas Yeshurun - R' Zev Cohen
-    Latitude: 42.012303,
-    Longitude: -87.706318
+    Phone: "847-504-1500",
+    Latitude: 42.029484,
+    Longitude: -87.711108
   },
   {
-    Phone: "866-487-1750",
+    Area: "Crown Heights",
+    Phone: "718-387-1750",
+    Latitude: 40.668993,
+    Longitude: -73.94287
+  },
+  {
+    Area: "Jersey Shore",
+    Phone: "732-531-9988",
+    Latitude: 40.269167,
+    Longitude: -73.991667
+  },
+  {
+    Area: "Flatbush",
+    Phone: "718-230-1000",
+    Latitude: 40.615891,
+    Longitude: -73.954788
+  },
+  {
+    Area: "Fleischmanns",
+    Phone: "845-254-5555",
+    Latitude: 42.158847,
+    Longitude: -74.519254
+  },
+  {
+    Area: "Los Angeles",
+    Phone: "800-613-1911",
+    Latitude: 34.054712,
+    Longitude: -118.390203
+  },
+  {
+    Area: "Kiryas Joel",
+    Phone: "845-783-1212",
+    Latitude: 41.342366,
+    Longitude: -74.169065
+  },
+  {
+    Area: "Kiryas Tosh",
+    Phone: "450-434-2222",
+    Latitude: 45.613523,
+    Longitude: -73.872362
+  },
+  {
+    Area: "Lakewood",
+    Phone: "732-370-3600",
+    Latitude: 40.106688,
+    Longitude: -74.224094
+  },
+  {
+    Area: "Mexico",
+    Phone: "5888-9999",
+    Latitude: 19.432608,
+    Longitude: -99.133208
+  },
+  {
+    Area: "Miami-Dade",
+    Phone: "305-919-4900",
+    Latitude: 25.924016,
+    Longitude: -80.176905
+  },
+  {
+    Area: "Mill Basin",
+    Phone: "718-230-1000",
+    Latitude: 40.616275,
+    Longitude: -73.912611
+  },
+  {
+    Area: "Montreal (M)",
+    Phone: "514-341-1818",
+    Latitude: 45.52795,
+    Longitude: -73.616037
+  },
+  {
+    Area: "Montreal (D&W)",
+    Phone: "514-341-1818",
+    Latitude: 45.51633,
+    Longitude: -73.625491
+  },
+  {
+    Area: "New York City",
+    Phone: "212-230-1000",
+    Latitude: 40.714135,
+    Longitude: -73.986433
+  },
+  {
+    Area: "Passaic",
+    Phone: "973-472-1002",
+    Latitude: 40.856766,
+    Longitude: -74.128476
+  },
+  {
+    Area: "Philadelphia",
+    Phone: "215-677-6700",
+    Latitude: 40.109719,
+    Longitude: -75.043844
+  },
+  {
+    Area: "Queens",
+    Phone: "718-387-1750",
+    Latitude: 40.704841,
+    Longitude: -73.830298
+  },
+  {
+    Area: "Riverdale",
+    Phone: "212-230-1000",
+    Latitude: 40.903981,
+    Longitude: -73.914126
+  },
+  {
+    Area: "Rockaways & Nassau County",
+    Phone: "212-230-1000",
+    Latitude: 40.600852,
+    Longitude: -73.745726
+  },
+  {
+    Area: "Rockland",
+    Phone: "845-425-1600",
+    Latitude: 41.11101,
+    Longitude: -74.070756
+  },
+  {
+    Area: "Toronto",
+    Phone: "416-256-1000",
+    Latitude: 43.718501,
+    Longitude: -79.433084
+  },
+  {
     Area: "Union City",
-    //Mesivta Sanz of Hudson County
-    Latitude: 40.772747,
+    Phone: "201-422-9000",
+    Latitude: 40.772552,
     Longitude: -74.027212
   },
   {
+    Area: "Middlesex County",
+    Phone: "732-640-5545",
+    Latitude: 40.526424,
+    Longitude: -74.386982
+  },
+  {
+    Area: "Elizabeth",
     Phone: "908-659-9550",
-    Area: "Elizabeth NJ",
-    //Adath Jeshurun
-    Latitude: 40.662489,
-    Longitude: -74.222166
+    Latitude: 40.651752,
+    Longitude: -74.214998
   },
   {
-    Phone: "914-241-3414",
-    Area: "Mt Kisco",
-    //Nitra yeshiva
-    Latitude: 41.232471,
-    Longitude: -73.748058
+    Area: "Washington Heights",
+    Phone: "212-230-1000",
+    Latitude: 40.840145,
+    Longitude: -73.938921
   },
   {
-    Phone: "973-472-1002",
-    Area: "Passaic/Clifton",
-    //BTU - R' Zupnik shul
-    Latitude: 40.852933,
-    Longitude: -74.12959
+    Area: "Williamsburg",
+    Phone: "718-387-1750",
+    Latitude: 40.706151,
+    Longitude: -73.952202
   },
   {
-    Phone: "973-773-9988",
-    Area: "North NJ",
-    //BTU - R' Zupnik shul
-    Latitude: 40.852933,
-    Longitude: -74.12959
+    Area: "Waterbury",
+    Phone: "203-754-4200",
+    Latitude: 41.562749,
+    Longitude: -73.040038
+  },
+  {
+    Area: "The West Side (NYC)",
+    Phone: "212-230-1000",
+    Latitude: 40.787292,
+    Longitude: -73.973244
   }
 ];
 
@@ -289,7 +305,7 @@ function tests() {
     {
       Latitude: 25.819901,
       Longitude: -80.122229,
-      Expected: "Miami"
+      Expected: "Miami-Dade"
     },
     {
       Latitude: 40.850583,

@@ -2,6 +2,6 @@
 
 Implemented using a k-d tree and the nearest neighbor search algorithm.
 
-The epicenters are rough guesses; and some areas are overlapping (seemingly an issue in NYC and Passaic). Please open an issue if you are getting incorrect results.
+Currently this is only for North America. Please open an issue if you're getting incorrect results.
 
-Currently this is only for North America.
+Credit to Moshe Berman for compiling the list of Hatzolah chapters. Check out his [Hatzalah app on the App Store](https://itunes.apple.com/us/app/hatzalah/id409666463?mt=8).
