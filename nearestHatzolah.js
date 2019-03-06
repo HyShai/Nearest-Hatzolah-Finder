@@ -240,10 +240,6 @@ class Box {
     this.Longitude + this.halfDimension >= point.Longitude &&
     this.Longitude - this.halfDimension <= point.Longitude);
   }
-
-  intersectsBox(box){
-
-  }
 }
 
 class QuadTree {
