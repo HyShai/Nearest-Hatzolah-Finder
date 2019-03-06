@@ -1,6 +1,6 @@
 ## Nearest Hatzolah Finder
 
-Implemented using a k-d tree and the nearest neighbor search algorithm.
+Implemented 2 ways using a k-d tree and a quadtree, and the nearest neighbor search algorithm.
 
 Currently this is only for North America. Please open an issue if you're getting incorrect results.
 
