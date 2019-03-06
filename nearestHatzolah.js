@@ -199,12 +199,151 @@ const cities = [
   }
 ];
 
+
 function distance(p1, p2) {
   const latDiff = p1.Latitude - p2.Latitude;
   const longDiff = p1.Longitude - p2.Longitude;
 
   return Math.sqrt(latDiff ** 2 + longDiff ** 2);
 }
+
+function getNearerDistanceToPoint(point, p1, p2) {
+  if (!p1) return p2;
+  if (!p2) return p1;
+
+  return distance(point, p1) < distance(point, p2) ? p1 : p2;
+}
+
+
+/*
+
+  #####                       #######                      
+ #     # #    #   ##   #####     #    #####  ###### ###### 
+ #     # #    #  #  #  #    #    #    #    # #      #      
+ #     # #    # #    # #    #    #    #    # #####  #####  
+ #   # # #    # ###### #    #    #    #####  #      #      
+ #    #  #    # #    # #    #    #    #   #  #      #      
+  #### #  ####  #    # #####     #    #    # ###### ###### 
+                                                           
+*/
+
+class Box {
+  constructor(latitude, longitude, halfDimension){
+    this.Latitude = latitude;
+    this.Longitude = longitude;
+    this.halfDimension = halfDimension;
+  }
+
+  containsPoint(point){
+    return (this.Latitude + this.halfDimension >= point.Latitude &&
+    this.Latitude - this.halfDimension <= point.Latitude &&
+    this.Longitude + this.halfDimension >= point.Longitude &&
+    this.Longitude - this.halfDimension <= point.Longitude);
+  }
+
+  intersectsBox(box){
+
+  }
+}
+
+class QuadTree {
+
+  QT_NODE_CAPACITY = 4;
+
+  constructor(box){
+    this.boundary = box;
+    this.points = [];
+    this.isSubdivided = false;
+  }
+
+  insert(point){
+    if(!this.boundary.containsPoint(point)) {
+      return;
+    }
+
+    if(this.points.length < this.QT_NODE_CAPACITY && !this.isSubdivided){
+      this.points.push(point);
+      return;
+    }
+
+    if(!this.isSubdivided){
+      this.subdivide();
+    }
+
+    this.northWest.insert(point);
+    this.northEast.insert(point);
+    this.southWest.insert(point);
+    this.southEast.insert(point);
+  }
+
+  subdivide(){
+    const newHalf = this.boundary.halfDimension / 2;
+    const lat = this.boundary.Latitude;
+    const long = this.boundary.Longitude;
+
+    const nwBoundary = new Box(lat + newHalf, long - newHalf, newHalf);
+    this.northWest = new QuadTree(nwBoundary);
+    const neBoundary = new Box(lat + newHalf, long + newHalf, newHalf);
+    this.northEast = new QuadTree(neBoundary);
+    const swBoundary = new Box(lat - newHalf, long - newHalf, newHalf);
+    this.southWest = new QuadTree(swBoundary);
+    const seBoundary = new Box(lat - newHalf, long + newHalf, newHalf);
+    this.southEast = new QuadTree(seBoundary);
+    
+    this.isSubdivided = true;
+  }
+
+  findNearest(point, nearest){
+    if(!this.boundary.containsPoint(point)){
+      return nearest;
+    }
+
+    for (let p of this.points){
+      nearest = getNearerDistanceToPoint(point, nearest, p);
+    }
+
+    if(!this.isSubdivided){
+      return nearest;
+    }
+
+    nearest = this.northEast.findNearest(point, nearest);
+    nearest = this.northWest.findNearest(point, nearest);
+    nearest = this.southEast.findNearest(point, nearest);
+    nearest = this.southWest.findNearest(point, nearest);
+
+    return nearest;
+  }
+}
+
+function buildQuadTree(cities){
+  let boundary = new Box(0, 0, 180);
+  let tree = new QuadTree(boundary);
+  
+  for(let city of cities){
+    tree.insert(city);
+  }
+
+  return tree;
+}
+
+function getNearestHatzolahQuadTree(latitude, longitude) {
+  const tree = buildQuadTree(cities);
+  const currentLocation = { Latitude: latitude, Longitude: longitude };
+  return tree.findNearest(currentLocation);
+}
+
+
+/*
+
+ #    #           #######                      
+ #   #  #####        #    #####  ###### ###### 
+ #  #   #    #       #    #    # #      #      
+ ###    #    #       #    #    # #####  #####  
+ #  #   #    #       #    #####  #      #      
+ #   #  #    #       #    #   #  #      #      
+ #    # #####        #    #    # ###### ###### 
+                                          
+*/
 
 function getAxis(depth) {
   const k = 2; //k is 2 (lat/long)
@@ -246,13 +385,6 @@ function naiveNearestPoint(root, point, nearest, depth = 0) {
   return naiveNearestPoint(nextBranch, point, nearest, depth + 1);
 }
 
-function getNearerDistanceToPoint(point, p1, p2) {
-  if (!p1) return p2;
-  if (!p2) return p1;
-
-  return distance(point, p1) < distance(point, p2) ? p1 : p2;
-}
-
 function getNearestPoint(root, point, depth = 0) {
   if (!root) return;
 
@@ -279,12 +411,15 @@ function getNearestPoint(root, point, depth = 0) {
   return nearest;
 }
 
-function getNearestHatzolah(latitude, longitude) {
+function getNearestHatzolahKdTree(latitude, longitude) {
   const tree = buildKdTree(cities);
   const currentLocation = { Latitude: latitude, Longitude: longitude };
   return getNearestPoint(tree, currentLocation);
 }
 
+/**
+ * Tests
+*/
 function tests() {
   const testLocations = [
     {
@@ -314,8 +449,18 @@ function tests() {
     }
   ];
 
+  console.log('testing kdtree');
   for (let location of testLocations) {
-    const result = getNearestHatzolah(location.Latitude, location.Longitude);
+    const result = getNearestHatzolahKdTree(location.Latitude, location.Longitude);
+    console.assert(
+      result.Area === location.Expected,
+      `Expected ${location.Expected} but got ${result.Area}`
+    );
+  }
+
+  console.log('testing quadtree');
+  for (let location of testLocations) {
+    const result = getNearestHatzolahQuadTree(location.Latitude, location.Longitude);
     console.assert(
       result.Area === location.Expected,
       `Expected ${location.Expected} but got ${result.Area}`
